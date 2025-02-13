@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .fact-display {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fact-display.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="fact-display" class="fact-display"></div>
+        <button id="random-fact-button" class="button">Show Random Fact</button>
+    </div>
+    <script>
+        const facts = [
+            {
+                "fact": "Variety of Types",
+                "description": "Galaxies come in various shapes and sizes, including spiral, elliptical, and irregular. The Milky Way, our home galaxy, is a barred spiral galaxy."
+            },
+            {
+                "fact": "Billions of Stars",
+                "description": "A typical galaxy contains billions of stars. The Milky Way, for example, is estimated to have around 100 to 400 billion stars."
+            },
+            {
+                "fact": "Galactic Clusters",
+                "description": "Galaxies are not isolated; they often exist in groups or clusters. The Local Group, which includes the Milky Way, contains more than 50 galaxies."
+            },
+            {
+                "fact": "Supermassive Black Holes",
+                "description": "Most large galaxies, including the Milky Way, have a supermassive black hole at their center. These black holes can have masses equivalent to millions or even billions of suns."
+            },
+            {
+                "fact": "Dark Matter",
+                "description": "Galaxies are composed not only of stars and gas but also a significant amount of dark matter, which does not emit light and is detectable only through its gravitational effects."
+            },
+            {
+                "fact": "Galactic Mergers",
+                "description": "Galaxies can collide and merge with each other, leading to the formation of larger galaxies. These events can trigger new star formation."
+            },
+            {
+                "fact": "Expanding Universe",
+                "description": "The universe is expanding, and galaxies are moving away from each other. This expansion was first observed by Edwin Hubble and is a key piece of evidence for the Big Bang theory."
+            },
+            {
+                "fact": "Oldest Galaxies",
+                "description": "Some galaxies are nearly as old as the universe itself, which is about 13.8 billion years old. The oldest known galaxies formed just a few hundred million years after the Big Bang."
+            },
+            {
+                "fact": "Star Formation",
+                "description": "Galaxies are sites of active star formation. Spiral galaxies, in particular, have regions known as spiral arms where new stars are born."
+            },
+            {
+                "fact": "Galactic Halos",
+                "description": "Surrounding many galaxies is a halo of stars and globular clusters. These halos can extend far beyond the visible part of the galaxy and contain some of the oldest stars."
+            }
+        ];
+
+        function getRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            return facts[randomIndex];
+        }
+
+        function displayFact() {
+            const factDisplay = document.getElementById('fact-display');
+            const randomFact = getRandomFact();
+            factDisplay.innerHTML = `<h3>${randomFact.fact}</h3><p>${randomFact.description}</p>`;
+            factDisplay.classList.add('show');
+        }
+
+        document.getElementById('random-fact-button').addEventListener('click', displayFact);
+
+        // Display a fact immediately upon loading
+        window.onload = displayFact;
+    </script>
+</body>
+</html>
